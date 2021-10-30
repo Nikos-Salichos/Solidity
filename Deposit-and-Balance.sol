@@ -1,17 +1,19 @@
-// SPDX-License-Identifier: MIT
-pragma solidity >=0.5.0;
+pragma solidity ^0.8.0;
 
-contract SendEtherToSmartContract {
-    
-    function invest() external payable{
+contract DepositAndWithdraw{
+
+    mapping(address => uint) public balances;
+ 
+    function deposit() external payable {
+        balances[msg.sender] +=msg.value;
     }
     
-    function balanceOf() external view returns(uint){
-        return address(this).balance;
+    function withdraw() public {
+        require(balances[msg.sender] > 0, "Not enough funds");
+        uint amount = balances[msg.sender];
+        balances[msg.sender] = 0;
+        (bool sent, ) = msg.sender.call{value: amount}("");
+        require(sent, "Failed to send funds");
     }
     
 }
-
-
-//Deploy with VALUE = 0 and then send value when you have already deploy smart contract
-//Change amount in "VALUE" tab and click invest to send ETHER
