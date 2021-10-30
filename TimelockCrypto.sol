@@ -21,11 +21,11 @@ contract TimelockCrypto {
     }
 
     function withdraw() public {
-        require(balances[msg.sender] > 0, "insufficient funds");
+        require(balances[msg.sender] > 0, "Not enough funds");
         require(block.timestamp > lockTime[msg.sender], "Your crypto are locked");
         uint amount = balances[msg.sender];
         balances[msg.sender] = 0;
         (bool sent, ) = msg.sender.call{value: amount}("");
-        require(sent, "Failed to send ether");
+        require(sent, "Failed to send funds");
     }
 }
