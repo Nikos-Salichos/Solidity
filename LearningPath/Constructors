@@ -1,0 +1,31 @@
+pragma solidity >= 0.7.0 <0.9.0;
+
+contract Member {
+    string name;
+    uint age;
+    
+     //initiliaze name and age upon deployment
+    constructor(string memory _name, uint _age) public {
+        name = _name;
+        age = _age;
+    }
+    
+}
+
+//First way to set constructor arguments
+contract Teacher is Member ('Tom', 28) {
+    function getTeacherDetails() public view returns(string memory, uint){
+        return (name,age);
+    }
+    
+}
+
+//Second way to set constructor arguments
+contract Student is Member{
+     constructor (string memory n, uint a) Member(n, a) public {
+     }
+ 
+     function getStudentDetails() public view returns(string memory, uint){
+        return (name,age);
+    }
+}
