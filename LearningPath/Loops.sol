@@ -1,6 +1,6 @@
 pragma solidity >= 0.7.0 < 0.9.9;
 
-contract Loop {
+contract LearnLoops {
     
      uint [] private longList = [1,2,3,4,5,6,7,8,9,10,1,12,13,14,15,16,17,18,19,20];
      uint [] private numbersList = [1,4,34,56];
