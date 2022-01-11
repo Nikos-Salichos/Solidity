@@ -18,7 +18,7 @@ contract learnFunctions  {
     }
     
     function DivideValues(uint a, uint b) public view returns (uint) {
-        uint result = a / b; //do not return fraction, only part before comma
+        uint result = a /b; //do not return fraction, only part before comma
         return result;
     }
     
