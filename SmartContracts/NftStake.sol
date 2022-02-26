@@ -21,15 +21,14 @@ contract NftStaker{
     mapping(address => uint256) public stakingTime;
 
     constructor(){
-        parentNFT = IERC1155(0xd9145CCE52D386f254917e481eB44e9943F39138); // Change it to your NFT contract address
+        parentNFT = IERC1155(); // Change it to your NFT contract address
     }
 
 
     function stake(uint256 tokenId, uint256 amount) public{
-        stakes[msg.sender]= Stake[tokenId, amount, block.timestamp];
-        
+        stakes[msg.sender]= Stake(tokenId, amount, block.timestamp);
+        parentNFT.safeTransferFrom(msg.sender, address(this), tokenId, amount, "0x00");
     }
-
 
 
 }
