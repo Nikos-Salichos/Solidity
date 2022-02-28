@@ -104,6 +104,10 @@ contract SharedWallet is Ownable{
         _;
     }
     
+        function sendMoney() public payable{
+        amountReceived += msg.value;
+    }
+    
 
     fallback () external{}
 
