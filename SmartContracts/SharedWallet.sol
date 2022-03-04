@@ -349,3 +349,29 @@ contract Allowance is Ownable{
     }
 
 }
+
+
+contract SharedWallet is Allowance{
+
+    event MoneyWithdraw(address indexed beneficiary, uint256 amount);
+    event MoneyDeposit(address indexed depositor, uint256 amount);
+
+    function widthdrawMoney(address payable beneficiary, uint256 amount) public onwnerOrAllowed(amount) {
+        require(amount <= address(this).balance, "Not enough funds to withdraw");
+        if (owner() != msg.sender) {
+            reduceAllowance(msg.sender, amount);  
+            emit MoneyWithdraw(msg.sender,amount);
+            beneficiary.transfer(amount);
+        }
+    }
+
+    function deposit() public payable{
+        emit MoneyDeposit(msg.sender,msg.value);
+        amountReceived += msg.value;
+    }
+
+    receive() external payable{
+         emit MoneyDeposit(msg.sender,msg.value);
+    }
+
+}
