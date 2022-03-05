@@ -12,3 +12,6 @@ You can test all smart contracts functionality at: https://remix.ethereum.org/
 
 **Get Reserves in Solidity(Example Uniswap V2)**
 - An example with interface of UniswapV2Factory , function getReserves from Uniswap for Weth and Dai.
+ 
+**Shared Wallet**
+- It is a wallet that you can deposit any ERC20 token and you can give authorization to other addresses to spend your ERC20 tokens.
