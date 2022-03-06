@@ -15,3 +15,6 @@ You can test all smart contracts functionality at: https://remix.ethereum.org/
  
 **Shared Wallet**
 - It is a wallet that you can deposit any ERC20 token and you can give authorization to other addresses to spend your ERC20 tokens.
+
+**TimelockCrypto**
+- Deposit crypto and lock them for a specific duration.
