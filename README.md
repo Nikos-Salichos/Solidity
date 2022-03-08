@@ -18,3 +18,7 @@ You can test all smart contracts functionality at: https://remix.ethereum.org/
 
 **TimelockCrypto**
 - Deposit crypto and lock them for a specific duration.
+
+**Escrow**
+- Deploy smart contract with both buyer and seller addresses. Buyer can use deposit function, to deposit an amount and then confirm delivery to receive the product.
+Buyer cannot confirm delivery before he deposits an amount.
