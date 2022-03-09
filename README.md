@@ -24,5 +24,4 @@ You can test all smart contracts functionality at: https://remix.ethereum.org/
 Buyer cannot confirm delivery before he deposits an amount.
 
 **Poll Contract**
-- Object Oriented Programming approach.
-Create polls and register voters (age required). Each voter can vote only once in each poll. Get selected poll results.
+- Create polls and register voters (age required). Each voter can vote only once in each poll. Get selected poll results. Object Oriented Programming (OOP) approach in code.
