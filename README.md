@@ -22,3 +22,7 @@ You can test all smart contracts functionality at: https://remix.ethereum.org/
 **Escrow**
 - Deploy smart contract with both buyer and seller addresses. Buyer can use deposit function, to deposit an amount and then confirm delivery to receive the product.
 Buyer cannot confirm delivery before he deposits an amount.
+
+**Poll Contract**
+- Object Oriented Programming approach.
+Create polls and register voters (age required). Each voter can vote only once in each poll. Get selected poll results.
