@@ -15,3 +15,33 @@ contract Oracle{
         Random = random;
     }
 }
+
+contract Lottery{
+    Oracle oracle;
+    address public owner;
+    address payable[] public players;
+    uint public lotteryId;
+    mapping(uint256 => address payable) public lotteryHistory;
+
+    modifier onlyOwner() {
+        require(msg.sender == owner);
+        _;
+    }
+
+    constructor(address oracleAddress){
+        oracle = Oracle(oracleAddress) ;
+        owner = msg.sender;
+        lotteryId = 1;
+    }
+
+    function enter() public payable{
+        require(msg.value > 0.01 ether, "Minimum amount to participate is 0.01 ether"); //minimum amount of value
+        players.push(payable(msg.sender)); //address of player entering lottery
+    }
+
+    function getRandomNumber() public view returns(uint256){
+        return uint(keccak256(abi.encodePacked(owner, block.timestamp, oracle.Random,block.difficulty)));
+    }
+
+}
+
