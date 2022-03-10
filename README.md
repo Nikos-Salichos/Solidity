@@ -25,3 +25,5 @@ Buyer cannot confirm delivery before he deposits an amount.
 
 **Poll Contract**
 - Create polls and register voters (age required). Each voter can vote only once in each poll. Get selected poll results. Object Oriented Programming (OOP) approach in code.
+
+**Reactor**
