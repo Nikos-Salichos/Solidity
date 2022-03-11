@@ -42,6 +42,28 @@ contract Lottery{
     function getRandomNumber() public view returns(uint256){
         return uint(keccak256(abi.encodePacked(owner, block.timestamp, oracle.Random,block.difficulty)));
     }
+    
+    
+    function getPlayers() public view returns(address payable[] memory){
+        return players;
+    }
+
+    function getWinnerByLottery(uint256 historyLotteryId)public view returns(address payable){
+        return  lotteryHistory[historyLotteryId];
+    }
+
+
+    function pickWinner() public onlyOwner{
+        uint256 index = getRandomNumber() % players.length;
+        players[index].transfer(address(this).balance);
+
+        lotteryHistory[lotteryId] = players[index];
+        lotteryId++;
+
+
+        // reset for the next winner after each lottery end
+        players = new address payable[](0);
+    }
 
 }
 
