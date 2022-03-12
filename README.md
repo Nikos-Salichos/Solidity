@@ -26,4 +26,9 @@ Buyer cannot confirm delivery before he deposits an amount.
 **Poll Contract**
 - Create polls and register voters (age required). Each voter can vote only once in each poll. Get selected poll results. Object Oriented Programming (OOP) approach in code.
 
+**Lottery Contract**
+- Everyone can join lottery (minimum amount 0.01 ether). Oracle contract increase the difficulty of random function. You have the ability to see past winners based on lotteryId.
+- 
 **Reactor**
+
+
