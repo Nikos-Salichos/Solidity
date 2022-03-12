@@ -28,7 +28,7 @@ Buyer cannot confirm delivery before he deposits an amount.
 
 **Lottery Contract**
 - Everyone can join lottery (minimum amount 0.01 ether). Oracle contract increase the difficulty of random function. You have the ability to see past winners based on lotteryId.
-- 
+
 **Reactor**
 
 
