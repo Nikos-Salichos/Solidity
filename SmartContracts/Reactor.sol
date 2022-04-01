@@ -56,7 +56,7 @@ contract Reactor {
     using SafeMath for uint256; //statement for using a library
 
     IERC20 public myToken;
-    uint public meltDownAmount; //total balance, everyone can claim
+    uint public meltDownAmount;
     uint public balanceToClaim;
     uint private nonce = 0;
     struct Player{
