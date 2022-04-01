@@ -68,8 +68,8 @@ contract Reactor {
     address payable private immutable burnAddress = payable(0x000000000000000000000000000000000000dEaD);
 
     //Player public player;
-    Player[] private playersArray; //Array of structs
-    mapping(address => Player) private playersMap; //Mapping addresses to structs
+    Player[] private playersArray;
+    mapping(address => Player) private playersMap; 
 
     //constructor token address
     // constructor(address tokenAddress, address burnAddress) public {
