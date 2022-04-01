@@ -30,5 +30,7 @@ Buyer cannot confirm delivery before he deposits an amount.
 - Everyone can join lottery (minimum amount 0.01 ether). Oracle contract increase the difficulty of getRandomNumber function. You have the ability to see past winners based on lotteryId.
 
 **Reactor**
+- It is a game that everyone can deposit and there a chance to send a specific amount to totalBalanceToClaim. 
+In addition each deposit has a chance to cause meltdown (10% amount burn, 25% send back to each player based on player's total amount, 65% send to player who caused meltdown). Finally each deposit has a chance to add amount to a public balance that the fastest player can withdraw!
 
 
