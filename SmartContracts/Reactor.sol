@@ -86,7 +86,7 @@ contract Reactor {
 
     function deposit() public payable {
 
-        uint256 winPercentage = 100;
+        uint256 winPercentage = 5;
         uint256 winnerNumber = claimSpillage();
         bool addressExists = isUser();
 
