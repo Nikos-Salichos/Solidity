@@ -10,6 +10,9 @@ You can test all smart contracts functionality at: https://remix.ethereum.org/
 **Calculator**
 - A classic calculator using SafeMath lib.
 
+**CryptoCoin**
+- ERC20 token with advanced functions.
+
 **Get Reserves in Solidity(Example Uniswap V2)**
 - An example with interface of UniswapV2Factory , function getReserves from Uniswap for Weth and Dai.
  
