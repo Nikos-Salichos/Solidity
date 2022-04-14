@@ -8,7 +8,7 @@ In SmartContracts folder you can find all smart contracts that i have develop on
 You can test all smart contracts functionality at: https://remix.ethereum.org/
 
 **Calculator**
-- A calculator with all classic calculator functions (not using SafeMath).
+- A classic calculator using SafeMath lib.
 
 **Get Reserves in Solidity(Example Uniswap V2)**
 - An example with interface of UniswapV2Factory , function getReserves from Uniswap for Weth and Dai.
