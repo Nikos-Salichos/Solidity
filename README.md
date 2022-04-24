@@ -33,7 +33,7 @@ Buyer cannot confirm delivery before he deposits an amount.
 - Everyone can join lottery (minimum amount 0.01 ether). Oracle contract increase the difficulty of getRandomNumber function. You have the ability to see past winners based on lotteryId.
 
 **Ticketing**
-A ticketing system.
+- A ticketing system.
 
 **Reactor**
 - It is a game that everyone can deposit and there a chance to send a specific amount to totalBalanceToClaim. 
