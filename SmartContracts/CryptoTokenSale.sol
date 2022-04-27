@@ -18,7 +18,7 @@ contract CryptoTokenSale{
         TokenPrice = tokenPrice;
     }
 
-    //Prepei na metaferw tokens apo to arxiko contract se auto edw gia na doulepsei to buyTokens
+    //In order to work you need to transfer tokens from CryptoCoin to this smart contract's address.
     function buyTokens(uint256 numberOfTokens)public payable{
         require(msg.value == numberOfTokens * TokenPrice , "msg.value must be equal number of tokens in wei");
         require(TokenContract.balanceOf(address(this)) >= numberOfTokens , "Cannot purchase more tokens than available");
