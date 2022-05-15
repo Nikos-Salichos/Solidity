@@ -10,6 +10,9 @@ You can test all smart contracts functionality at: https://remix.ethereum.org/
 **Calculator**
 - A classic calculator using SafeMath lib (not need after v8.0).
 
+**CarRental**
+- Smart contract that can add renters,  allow/restrict a renter to rent a car, calculate rental time, proceed payments etc.
+
 **CryptoCoin**
 - ERC20 token with advanced functions.
 
