@@ -3,9 +3,11 @@ pragma solidity >=0.8.10;
 
 contract CarRental{
     address owner;
-
+    uint public rentalCostPerDay;
+    
     constructor(){
         owner = msg.sender;
+        rentalCostPerDay = 20000000000000000;
     }
 
    modifier onlyOwner(){
@@ -27,12 +29,16 @@ contract CarRental{
 
    mapping(address => Renter) public renters;
 
+   function changeRentalCostPerDay(uint value) public onlyOwner {
+       rentalCostPerDay = value;
+   }
+
     function addRenter( address payable walletAddress,string memory firstName,string memory lastName,
                         bool canRent,bool active,uint balance,uint due,uint start,uint end)public {
         renters[walletAddress] = Renter(walletAddress,firstName,lastName,canRent,active,balance,due,start,end);
     }
 
-    function rentCar(address walletAddress)public {
+    function rentCar(address walletAddress) public {
         require(renters[walletAddress].due == 0, "You have a pending balance");
         require(renters[walletAddress].canRent == true, "You cannot rent a car");
         renters[walletAddress].active = true;
@@ -66,10 +72,10 @@ contract CarRental{
         return renters[walletAddress].balance;
     }
 
-    function setDue(address walletAddress)internal {
+    function setDue(address walletAddress) internal {
         uint timespanInMinutes = getTotalRentalDuration(walletAddress);
-        uint fiveMinutesIncrements = timespanInMinutes / 5;
-        renters[walletAddress].due = fiveMinutesIncrements * 1000000000000000;
+        uint oneDayIncrement = timespanInMinutes / 1440;
+        renters[walletAddress].due = oneDayIncrement * rentalCostPerDay ;
     }
 
     function canRentCar(address walletAddress)public view returns(bool){
@@ -80,7 +86,7 @@ contract CarRental{
         renters[walletAddress].balance += msg.value; 
     }
 
-    function makePayment(address walletAddress)payable public{
+    function makePayment(address walletAddress) payable public{
         require(renters[walletAddress].due > 0,"You do not owe anything");
         require(renters[walletAddress].balance > msg.value,"You have enough funds to complete the payment, please make a deposit");
         renters[walletAddress].balance -= msg.value;
