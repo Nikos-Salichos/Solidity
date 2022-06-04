@@ -10,6 +10,8 @@ contract BookRegistration {
 
     Book[] private bookList;
     
-    mapping(uint256 => address) bookToOwner;
+    mapping(uint256 => address) bookToOwner;    
         
+    event AddBook(address recipient, uint bookId);
+    event SetFinished(uint bookId, bool finished);
 }
