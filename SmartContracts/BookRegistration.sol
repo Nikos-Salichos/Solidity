@@ -43,4 +43,8 @@ contract BookRegistration {
     }
     
     
+    function getFinishedBooks() external view returns(Book[] memory){
+        return getBookList(true);
+    }
+    
 }
