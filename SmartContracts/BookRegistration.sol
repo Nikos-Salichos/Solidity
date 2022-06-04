@@ -21,4 +21,26 @@ contract BookRegistration {
         bookToOwner[bookId] = msg.sender;
         emit AddBook(msg.sender, bookId);
     }
+    
+    function getBookList(bool finished) private view returns(Book[] memory){
+        Book[] memory temporary = new Book[](bookList.length);
+
+        uint count = 0;
+
+        for (uint256 i = 0; i < bookList.length; i++) {
+            if (bookToOwner[i] == msg.sender && bookList[i].finished == finished){
+                temporary[count] = bookList[i];
+                count++;
+            }
+        }
+
+        Book[] memory result = new Book[](count);
+        for (uint256 i = 0; i < count; i++) {
+            result[i] = temporary[i];
+        }
+
+        return result;
+    }
+    
+    
 }
