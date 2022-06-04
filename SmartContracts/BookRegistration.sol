@@ -51,4 +51,12 @@ contract BookRegistration {
         return getBookList(false);
     }
     
+    
+    function setFinished(uint bookId, bool finished)external{
+        if(bookToOwner[bookId] == msg.sender){
+            bookList[bookId].finished = finished;
+            emit SetFinished(bookId, finished);
+        }
+    }
+    
 }
