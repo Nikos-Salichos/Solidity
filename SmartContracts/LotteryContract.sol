@@ -35,7 +35,7 @@ contract Lottery{
     }
 
     function enter() public payable{
-        require(msg.value == 0.01 ether, "Minimum amount to participate is 0.01 ether"); //minimum amount of value
+        require(msg.value == 0.01 ether, "Amount to participate is 0.01 ether");
         players.push(payable(msg.sender)); //address of player entering lottery
     }
 
