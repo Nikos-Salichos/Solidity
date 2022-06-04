@@ -9,5 +9,7 @@ contract BookRegistration {
     }
 
     Book[] private bookList;
-
+    
+    mapping(uint256 => address) bookToOwner;
+        
 }
