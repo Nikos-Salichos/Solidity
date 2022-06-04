@@ -47,4 +47,8 @@ contract BookRegistration {
         return getBookList(true);
     }
     
+    function getUnfinishedBooks() external view returns(Book[] memory){
+        return getBookList(false);
+    }
+    
 }
