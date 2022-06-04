@@ -8,4 +8,6 @@ contract BookRegistration {
         bool finished;
     }
 
+    Book[] private bookList;
+
 }
