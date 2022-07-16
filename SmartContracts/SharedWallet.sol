@@ -350,7 +350,6 @@ contract Allowance is Ownable{
 
 }
 
-
 contract SharedWallet is Allowance{
 
     event MoneyWithdraw(address indexed beneficiary, uint256 amount);
