@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 
-pragma solidity ^ 0.8.0;
+pragma solidity >= 0.8.0;
 
 contract Oracle{
     address Owner;
@@ -35,15 +35,19 @@ contract Lottery{
     }
 
     function enter() public payable{
-        require(msg.value == 0.01 ether, "Amount to participate is 0.01 ether");
+        require(msg.value > 0.01 ether, "Minimum amount to participate is 0.01 ether"); //minimum amount of value
         players.push(payable(msg.sender)); //address of player entering lottery
     }
 
+    
     function getRandomNumber() public view returns(uint256){
         return uint(keccak256(abi.encodePacked(owner, block.timestamp, oracle.Random,block.difficulty)));
     }
-    
-    
+
+    function getBalance() public view returns(uint256){
+        return address(this).balance;
+    }
+
     function getPlayers() public view returns(address payable[] memory){
         return players;
     }
@@ -66,4 +70,3 @@ contract Lottery{
     }
 
 }
-
