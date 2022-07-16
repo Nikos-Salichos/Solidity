@@ -1,8 +1,8 @@
-//SPDX-License-Identifier: Unlicensed
-pragma solidity >=0.8.0;
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity >= 0.8.13;
 
 
-contract Ownable {
+contract Ownable  {
   address public owner;
 
 
@@ -45,7 +45,54 @@ contract Ownable {
   }
 }
 
-contract Pausable is Ownable{
+contract Authorizable is Ownable {
+
+    mapping(address => bool) public authorized;
+
+    event AuthorizableAddressAdded(address addr);
+    event AuthorizableAddressRemoved(address addr);
+
+    modifier onlyAuthorized() {
+        require(authorized[msg.sender] || owner == msg.sender);
+        _;
+    }
+
+    function addAuthorizedAddress(address addr) onlyOwner public returns(bool success) {
+        if (!authorized[addr]) {
+            authorized[addr] = true;
+            emit AuthorizableAddressAdded(addr);
+            success = true; 
+        }
+    }
+
+    function addAuthorizedAddresses(address[] memory addrs) onlyOwner public returns(bool success) {
+        for (uint256 i = 0; i < addrs.length; i++) {
+            if (addAuthorizedAddress(addrs[i])) {
+                success = true;
+            }
+        }
+    }
+
+    function removeAddressFromAuthorized(address addr) onlyOwner public returns(bool success) {
+        if (authorized[addr]) {
+            authorized[addr] = false;
+            emit AuthorizableAddressRemoved(addr);
+            success = true;
+        }
+    }
+
+     function removeAddressesFromWhitelist(address[] memory addrs) onlyOwner public returns(bool success) {
+         for (uint256 i = 0; i < addrs.length; i++) {
+             if (removeAddressFromAuthorized(addrs[i])) {
+             success = true;
+                }
+         }
+     }
+
+}
+
+
+contract Pausable is Authorizable{
   event Pause();
   event Unpause();
   event NotPausable();
@@ -137,20 +184,23 @@ interface IERC20 {
         owner = msg.sender;
     }
 
+    modifier onlyTrader(){                   
+        require(owner == msg.sender);    
+        _;
+    }
 
     function getBalance(address tokenOwner) public view returns (uint256) {
         return balanceOf[tokenOwner];
     }
 
-    function mint(address receiver , uint amount)public onlyOwner whenNotPaused{
-        require(msg.sender == owner);
+    function mint(address receiver , uint amount)public onlyAuthorized whenNotPaused{
         require(totalSupply + amount <= cap, "Token: cap exceeded");
         balanceOf[receiver] += amount;
         totalSupply += amount;
     }
 
-    function allowance(address owner, address delegate) override public whenNotPaused view returns (uint) {
-        return allowed[owner][delegate];
+    function allowance(address owner, address spender) override public whenNotPaused view returns (uint) {
+        return allowed[owner][spender];
     }
 
      function destroySmartContract(address payable _to) public onlyOwner {
@@ -158,9 +208,9 @@ interface IERC20 {
         selfdestruct(_to);
     }
 
-    function approve(address delegate, uint256 amount) public whenNotPaused override returns (bool) {
-        allowed[msg.sender][delegate] = amount;
-        emit Approval(msg.sender, delegate, amount);
+    function approve(address spender, uint256 amount) public whenNotPaused override returns (bool) {
+        allowed[msg.sender][spender] = amount;
+        emit Approval(msg.sender, spender, amount);
         return true;
     }
 
