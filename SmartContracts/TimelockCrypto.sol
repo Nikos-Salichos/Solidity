@@ -1,12 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
  
-// use safe math to prevent underflow and overflow
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/math/SafeMath.sol";
- 
 contract TimelockCrypto {
-
-    using SafeMath for uint;
     
     mapping(address => uint) public balances;
   
@@ -18,7 +13,7 @@ contract TimelockCrypto {
     }
 
     function increaseLockTime(uint _secondsToIncrease) public {
-         lockTime[msg.sender] = lockTime[msg.sender].add(_secondsToIncrease);
+         lockTime[msg.sender] = lockTime[msg.sender]+_secondsToIncrease;
     }
 
     function withdraw() public {
