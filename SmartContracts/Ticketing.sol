@@ -1,15 +1,16 @@
-//SPDX-License-Identifier: Unlicensed
+//SPDX-License-Identifier: UNLICENSED
 
 pragma solidity >= 0.8.0;
 
 contract Ticket{
     
-    uint256 ticketPrice = 0.01 ether;
+    uint256 ticketPrice;
     address owner;
     mapping(address => uint256) public ticketHolders;
 
-    constructor(){
+    constructor(uint amount){
         owner = msg.sender;
+        ticketPrice = amount;
     }
 
     function buyTickets(address user, uint256 amount) payable public{
