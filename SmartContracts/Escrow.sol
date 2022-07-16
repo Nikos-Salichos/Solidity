@@ -1,38 +1,37 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.7;
+pragma solidity >=0.8.7;
 
 contract Escrow{
 
-    enum State { 
+     enum State { 
         AWAITING_PAYMENT, 
         AWAITING_DELIVERY, 
         COMPLETE 
     }
-
     
-    State public currentState;
+    State public currState;
     
-    address public buyerAddress;
-    address payable public sellerAddress;
+    address public buyer;
+    address payable public seller;
     
     modifier onlyBuyer() {
-        require(msg.sender == buyerAddress, "Only buyer can call this method");
+        require(msg.sender == buyer, "Only buyer can call this method");
         _;
     }
     
     constructor(address _buyer, address payable _seller)  {
-        buyerAddress = _buyer;
-        sellerAddress = _seller;
+        buyer = _buyer;
+        seller = _seller;
     }
     
     function deposit() onlyBuyer external payable {
-        require(currentState == State.AWAITING_PAYMENT, "Already paid, you cannot pay twice");
-        currentState = State.AWAITING_DELIVERY;
+        require(currState == State.AWAITING_PAYMENT, "Already paid");
+        currState = State.AWAITING_DELIVERY;
     }
     
     function confirmDelivery() onlyBuyer external {
-         require(currentState == State.AWAITING_DELIVERY, "Cannot confirm delivery from buyer");
-        sellerAddress.transfer(address(this).balance);
-        currentState = State.COMPLETE;
+        require(currState == State.AWAITING_DELIVERY, "Cannot confirm delivery");
+        seller.transfer(address(this).balance);
+        currState = State.COMPLETE;
     }
 }
