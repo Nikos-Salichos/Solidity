@@ -5,9 +5,9 @@ contract CarRental{
     address owner;
     uint public rentalCostPerDay;
     
-    constructor(){
+    constructor(uint amount){
         owner = msg.sender;
-        rentalCostPerDay = 20000000000000000;
+        rentalCostPerDay = amount; //in Wei
     }
 
    modifier onlyOwner(){
