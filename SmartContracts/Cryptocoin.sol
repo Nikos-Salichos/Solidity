@@ -297,5 +297,7 @@ contract CryptoTokenSale{
    CryptoCoin public TokenContract;
    uint256 public TokenPrice;
    uint256 public TotalTokensSold;
+   
+   event Sell(address buyer, uint256 amount);
  }
 
