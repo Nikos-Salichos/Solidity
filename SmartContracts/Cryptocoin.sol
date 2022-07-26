@@ -144,35 +144,25 @@ contract Pausable is Authorizable{
     }
 }
 
-interface IERC20 {
-
-    function totalSupply() external view returns (uint256);
-    function balanceOf(address account) external view returns (uint256);
-    function allowance(address owner, address spender) external view returns (uint256);
-
-    function transfer(address recipient, uint256 amount) external returns (bool);
-    function approve(address spender, uint256 amount) external returns (bool);
-    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
-
-    event Transfer(address indexed from, address indexed to, uint256 value);
-    event Approval(address indexed owner, address indexed spender, uint256 value);
-}
-
- contract CryptoCoin is IERC20,Pausable{
+contract CryptoCoin is Pausable{
 
     uint256 public immutable cap;
     string public name;
     string public symbol;
     uint256 public decimals = 18;
-    uint256 public override totalSupply;
+    uint256 public  totalSupply;
 
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
     event IncreaseApproval(address indexed owner,address indexed spender,uint256 value);
     event DecreaseApproval(address indexed owner,address indexed spender,uint256 value);
     event Sent(address from, address to, uint amount);
     event Burn(address from,uint256 amount);
+    event Locked(address indexed owner, uint256 indexed amount);
 
-    mapping(address => uint256) public override balanceOf;
+    mapping(address => uint256) public  balanceOf;
     mapping(address => mapping(address => uint256)) public allowed;
+    mapping(address => uint256) locked;
 
     constructor(uint256 initialSupply, string memory tokenName, string memory tokenSymbol, uint256 tokenCap )   { 
         require(tokenCap > 0, "Token: cap is 0");
@@ -189,6 +179,33 @@ interface IERC20 {
         _;
     }
 
+    function increaseLockedAmount(address _owner, uint256 _amount) onlyOwner public returns (uint256) {
+        uint256 lockingAmount = locked[_owner]+_amount;
+        require(getBalance(_owner) >= lockingAmount, "Locking amount must not exceed balance");
+        locked[_owner] = lockingAmount;
+        emit Locked(_owner, lockingAmount);
+        return lockingAmount;
+    }
+
+    function decreaseLockedAmount(address _owner, uint256 _amount) onlyOwner public returns (uint256) {
+        require(locked[_owner] > 0, "Cannot go negative. Already at 0 locked tokens.");
+        if (_amount > locked[_owner]) {
+            _amount = locked[_owner];
+        }
+        uint256 lockingAmount = locked[_owner]-_amount;
+        locked[_owner] = lockingAmount;
+        emit Locked(_owner, lockingAmount);
+        return lockingAmount;
+    }
+
+    function getLockedAmount(address _owner) view public returns (uint256) {
+        return locked[_owner];
+    }
+
+    function getUnlockedAmount(address _owner) view public returns (uint256) {
+        return balanceOf[_owner]-locked[_owner];
+    }
+
     function getBalance(address tokenOwner) public view returns (uint256) {
         return balanceOf[tokenOwner];
     }
@@ -199,7 +216,7 @@ interface IERC20 {
         totalSupply += amount;
     }
 
-    function allowance(address owner, address spender) override public whenNotPaused view returns (uint) {
+    function allowance(address owner, address spender)  public whenNotPaused view returns (uint) {
         return allowed[owner][spender];
     }
 
@@ -208,14 +225,15 @@ interface IERC20 {
         selfdestruct(_to);
     }
 
-    function approve(address spender, uint256 amount) public whenNotPaused override returns (bool) {
+    function approve(address spender, uint256 amount) public whenNotPaused  returns (bool) {
         allowed[msg.sender][spender] = amount;
         emit Approval(msg.sender, spender, amount);
         return true;
     }
 
-    function transfer(address receiver, uint256 amount) public whenNotPaused override returns (bool) {
-        require(amount <= balanceOf[msg.sender]);
+    function transfer(address receiver, uint256 amount) public whenNotPaused  returns (bool) {
+        require(receiver != address(0),"Address is not valid");
+        require(amount <= balanceOf[msg.sender] - locked[msg.sender] ,"Funds are not enough" );
         balanceOf[msg.sender] = balanceOf[msg.sender] -amount;
         balanceOf[receiver] = balanceOf[receiver] + amount;
         emit Transfer(msg.sender, receiver, amount);
@@ -245,16 +263,17 @@ interface IERC20 {
     }
 
 
-    function transferFrom(address from , address to, uint256 value) public override whenNotPaused returns (bool success){
-        require(value <= balanceOf[from]); 
-        require(value <= allowed[from][msg.sender]);
+    function transferFrom(address from, address to, uint256 value) public  whenNotPaused returns (bool success){
+        require(to != address(0),"Address is not valid");
+        require(value <= balanceOf[from] - locked[from],"Funds are not enough" );
+        require(value <= allowed[from][msg.sender] - locked[from],"There is no approval" );
         balanceOf[from] -=value;
         balanceOf[to] +=value;
         allowed[from][msg.sender] -= value;
         return true;
     }
 
-    function burn(uint256 amount) public onlyOwner whenNotPaused returns(bool success){
+    function burn(uint256 amount) public onlyAuthorized whenNotPaused returns(bool success){
         require(balanceOf[msg.sender] >= amount);
         balanceOf[msg.sender] -= amount;
         totalSupply -= amount;
@@ -262,8 +281,7 @@ interface IERC20 {
         return true;
     }
 
-    function burnFrom (address from, uint256 amount) public onlyOwner whenNotPaused returns (bool success){
-        require(msg.sender == owner);
+    function burnFrom (address from, uint256 amount) public onlyAuthorized whenNotPaused returns (bool success){
         require(amount <= allowed[from][msg.sender]);
         balanceOf[from] -=amount;
         allowed[from][msg.sender]  -=amount;
