@@ -296,5 +296,6 @@ contract CryptoTokenSale{
    address admin;
    CryptoCoin public TokenContract;
    uint256 public TokenPrice;
+   uint256 public TotalTokensSold;
  }
 
