@@ -294,5 +294,6 @@ contract CryptoCoin is Pausable{
 contract CryptoTokenSale{
 
    address admin;
-}
+   CryptoCoin public TokenContract;
+ }
 
