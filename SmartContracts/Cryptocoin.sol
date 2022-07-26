@@ -289,6 +289,8 @@ contract CryptoCoin is Pausable{
         emit Burn(from, amount);
         return true;
     }
-
-
 }
+
+contract CryptoTokenSale{
+}
+
