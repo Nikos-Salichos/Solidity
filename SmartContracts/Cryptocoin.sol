@@ -302,7 +302,7 @@ contract CryptoTokenSale{
    
    constructor( CryptoCoin tokenContract, uint256 tokenPrice){
     admin = msg.sender;
-    
+    TokenContract = tokenContract;
     
     }
    
