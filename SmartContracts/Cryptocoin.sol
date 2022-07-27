@@ -301,7 +301,10 @@ contract CryptoTokenSale{
    event Sell(address buyer, uint256 amount);
    
    constructor( CryptoCoin tokenContract, uint256 tokenPrice){
-   }
+    admin = msg.sender;
+    
+    
+    }
    
  }
 
