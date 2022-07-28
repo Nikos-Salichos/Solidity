@@ -312,6 +312,7 @@ contract CryptoTokenSale{
       require(TokenContract.transfer(msg.sender,  numberOfTokens));
       
       TotalTokensSold += numberOfTokens;
+      emit Sell(msg.sender, numberOfTokens);
     }
    
  }
