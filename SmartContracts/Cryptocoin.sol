@@ -307,7 +307,7 @@ contract CryptoTokenSale{
     }
     
      function buyTokens(uint256 numberOfTokens)public payable{
-      
+      require(msg.value == numberOfTokens * TokenPrice , "msg.value must be equal number of tokens in wei");
     }
    
  }
