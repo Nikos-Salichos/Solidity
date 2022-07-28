@@ -305,6 +305,10 @@ contract CryptoTokenSale{
     TokenContract = tokenContract;
     TokenPrice = tokenPrice;
     }
+    
+     function buyTokens(uint256 numberOfTokens)public payable{
+      
+    }
    
  }
 
