@@ -308,6 +308,7 @@ contract CryptoTokenSale{
     
      function buyTokens(uint256 numberOfTokens)public payable{
       require(msg.value == numberOfTokens * TokenPrice , "msg.value must be equal number of tokens in wei");
+      require(TokenContract.balanceOf(address(this)) >= numberOfTokens , "Cannot purchase more tokens than available");
     }
    
  }
