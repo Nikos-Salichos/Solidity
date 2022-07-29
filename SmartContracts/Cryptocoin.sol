@@ -317,7 +317,7 @@ contract CryptoTokenSale{
     
      function endSale() public {
         require(msg.sender == admin);
-
+        selfdestruct(payable(admin));
     }
     
    
