@@ -314,6 +314,10 @@ contract CryptoTokenSale{
       TotalTokensSold += numberOfTokens;
       emit Sell(msg.sender, numberOfTokens);
     }
+    
+     function endSale() public {
+    }
+    
    
  }
 
