@@ -320,8 +320,3 @@ contract CryptoTokenSale{
         selfdestruct(payable(admin));
     }
  }
-
-
-contract Airdrop {
-
-}
