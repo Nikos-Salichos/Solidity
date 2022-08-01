@@ -319,7 +319,9 @@ contract CryptoTokenSale{
         require(msg.sender == admin);
         selfdestruct(payable(admin));
     }
-    
-   
  }
 
+
+contract Airdrop {
+
+}
