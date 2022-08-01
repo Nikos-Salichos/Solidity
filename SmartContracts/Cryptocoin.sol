@@ -331,5 +331,7 @@ contract Airdrop {
      owner = msg.sender;
   }
   
+  receive() external payable{}
+  
 }
 
