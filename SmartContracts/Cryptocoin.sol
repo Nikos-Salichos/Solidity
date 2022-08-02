@@ -336,7 +336,7 @@ contract Airdrop {
    function airdropToken(address _tokenAddress, address[] memory _recipients, uint256 _amount) public {
         require(CryptoCoin(_tokenAddress).allowance(msg.sender,address(this))>0, "contract is not allowed to spend that token");
          for (uint i=0;i<_recipients.length;i++){
-         
+           CryptoCoin(_tokenAddress).transferFrom(msg.sender, _recipients[i], _amount);
         }
     }
   
