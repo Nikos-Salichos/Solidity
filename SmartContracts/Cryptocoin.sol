@@ -344,5 +344,6 @@ contract Airdrop {
 contract Staking {
   
    CryptoCoin public yourToken;
+   address public owner;
 }
 
