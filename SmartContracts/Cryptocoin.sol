@@ -338,7 +338,11 @@ contract Airdrop {
          for (uint i=0;i<_recipients.length;i++){
            CryptoCoin(_tokenAddress).transferFrom(msg.sender, _recipients[i], _amount);
         }
-    }
+    } 
+}
+
+contract Staking {
   
+   CryptoCoin public yourToken;
 }
 
