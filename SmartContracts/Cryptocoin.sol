@@ -358,5 +358,7 @@ contract Staking {
         bool open;
     }
     
+     Position position;
+    
 }
 
