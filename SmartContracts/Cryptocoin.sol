@@ -360,7 +360,9 @@ contract Staking {
     
      Position position;
      
-     uint public currentPositionId;
+    uint public currentPositionId;
+    mapping(uint => Position) positions;
+    
     
 }
 
