@@ -347,5 +347,16 @@ contract Staking {
    address public owner;
    address public sender;
    
+   struct Position{
+        uint positionId;
+        address walletAddress;
+        uint createdDate;
+        uint unlockDate;
+        uint percentInterest;
+        uint weiStaked;
+        uint weiInterest;
+        bool open;
+    }
+    
 }
 
