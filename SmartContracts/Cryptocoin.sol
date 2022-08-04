@@ -364,7 +364,7 @@ contract Staking {
     mapping(uint => Position) positions;
     mapping(address => uint[]) public positionIdsByAddress;
     mapping(uint => uint) public stakingTiers;
-    
+    uint[] public lockPeriods;
     
 }
 
