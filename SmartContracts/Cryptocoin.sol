@@ -359,6 +359,8 @@ contract Staking {
     }
     
      Position position;
+     
+     uint public currentPositionId;
     
 }
 
