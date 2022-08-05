@@ -366,5 +366,12 @@ contract Staking {
     mapping(uint => uint) public stakingTiers;
     uint[] public lockPeriods;
     
+    constructor(address tokenAddress) payable{
+        require(tokenAddress != address(0), "Token address cannot be null-address");
+
+
+
+    }
+    
 }
 
