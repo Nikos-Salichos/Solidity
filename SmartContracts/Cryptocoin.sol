@@ -368,7 +368,7 @@ contract Staking {
     
     constructor(address tokenAddress) payable{
         require(tokenAddress != address(0), "Token address cannot be null-address");
-
+        owner = msg.sender;
 
 
     }
