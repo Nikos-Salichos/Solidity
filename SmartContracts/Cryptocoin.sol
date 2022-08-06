@@ -451,5 +451,7 @@ contract Staking {
         }
     }
     
+    receive() external payable{}
+    
 }
 
