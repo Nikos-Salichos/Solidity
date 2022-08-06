@@ -382,6 +382,14 @@ contract Staking {
         yourToken = CryptoCoin(tokenAddress);
     }
 
+     function stakeToken(uint numberOfDays, uint amount) external {
+        require(stakingTiers[numberOfDays] > 0, "Staking tier of these days did not found");
+
+        yourToken.transferFrom(msg.sender,address(this), amount); 
+
+
+    }
+    
     
 }
 
