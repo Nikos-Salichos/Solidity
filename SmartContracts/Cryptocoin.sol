@@ -366,12 +366,22 @@ contract Staking {
     mapping(uint => uint) public stakingTiers;
     uint[] public lockPeriods;
     
-    constructor(address tokenAddress) payable{
+   constructor(address tokenAddress) payable{
         require(tokenAddress != address(0), "Token address cannot be null-address");
         owner = msg.sender;
         currentPositionId - 0;
 
+        stakingTiers[30] = 700; // 7%APY
+        stakingTiers[90] = 1000; //10% APY
+        stakingTiers[180] = 2000; //20% APY
+
+        lockPeriods.push(30);
+        lockPeriods.push(90);
+        lockPeriods.push(180);
+
+        yourToken = CryptoCoin(tokenAddress);
     }
+
     
 }
 
