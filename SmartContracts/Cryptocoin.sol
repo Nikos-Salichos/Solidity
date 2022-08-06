@@ -406,5 +406,11 @@ contract Staking {
         return basisPoints / 10000 * weiAmount;
     }
     
+     function modifyLockPeriods(uint numberOfDays, uint basisPoints) external{
+        require(owner == msg.sender, "Only owner may modify staking periods");
+        stakingTiers[numberOfDays] = basisPoints;
+        lockPeriods.push(numberOfDays);
+    }
+    
 }
 
