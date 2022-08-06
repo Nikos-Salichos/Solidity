@@ -416,7 +416,9 @@ contract Staking {
         return lockPeriods;
     }
     
-    
+     function getInterestRate(uint numberOfDays) external view returns(uint){
+        return stakingTiers[numberOfDays];
+    }
     
 }
 
