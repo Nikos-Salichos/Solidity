@@ -402,6 +402,9 @@ contract Staking {
         currentPositionId += 1;
     }
     
+     function calculateInterest(uint basisPoints, uint weiAmount) private pure returns(uint){
+        return basisPoints / 10000 * weiAmount;
+    }
     
 }
 
