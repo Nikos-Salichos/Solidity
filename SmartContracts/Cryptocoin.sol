@@ -420,5 +420,9 @@ contract Staking {
         return stakingTiers[numberOfDays];
     }
     
+     function getPositionById(uint positionId) external view returns(Position memory){
+        return positions[positionId];
+    }
+    
 }
 
