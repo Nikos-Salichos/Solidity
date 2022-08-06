@@ -433,5 +433,23 @@ contract Staking {
         positions[positionId].unlockDate = newUnlockDate;
     }
     
+     //Should add stakingAddress in Authorizable
+    function closePosition(uint positionId) external{
+        require(positions[positionId].walletAddress == msg.sender,"Only position creator may modify position");
+        require(positions[positionId].open == true,"Position is closed");
+
+        positions[positionId].open = false;
+
+        if (block.timestamp > positions[positionId].unlockDate){
+            uint amount = positions[positionId].weiStaked;
+            yourToken.transfer(msg.sender,positions[positionId].weiStaked);
+            yourToken.mint(msg.sender,amount);
+        }else{
+            uint amount = positions[positionId].weiStaked/2;
+            yourToken.transfer(msg.sender,amount);
+            yourToken.transfer(address(0x000000000000000000000000000000000000dEaD),amount);
+        }
+    }
+    
 }
 
