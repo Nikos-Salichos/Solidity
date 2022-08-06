@@ -412,5 +412,11 @@ contract Staking {
         lockPeriods.push(numberOfDays);
     }
     
+     function getLockPeriods() external view returns(uint[] memory){
+        return lockPeriods;
+    }
+    
+    
+    
 }
 
