@@ -387,7 +387,19 @@ contract Staking {
 
         yourToken.transferFrom(msg.sender,address(this), amount); 
 
+        positions[currentPositionId] = Position(
+            currentPositionId,
+            msg.sender,
+            block.timestamp,
+            block.timestamp + (numberOfDays * 1 days),
+            stakingTiers[numberOfDays],
+            amount,
+            calculateInterest(stakingTiers[numberOfDays], amount),
+            true
+        );
 
+        positionIdsByAddress[msg.sender].push(currentPositionId);
+        currentPositionId += 1;
     }
     
     
