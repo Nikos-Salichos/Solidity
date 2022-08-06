@@ -428,5 +428,10 @@ contract Staking {
         return positionIdsByAddress[walletAddress];
     }
     
+     function changeUnlockDate(uint positionId, uint newUnlockDate) external{
+        require(owner == msg.sender, "Only owner may modify staking periods");
+        positions[positionId].unlockDate = newUnlockDate;
+    }
+    
 }
 
