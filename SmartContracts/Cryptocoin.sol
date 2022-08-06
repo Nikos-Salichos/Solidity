@@ -424,5 +424,9 @@ contract Staking {
         return positions[positionId];
     }
     
+     function getPositionIdsForAddress(address walletAddress) external view returns(uint[] memory){
+        return positionIdsByAddress[walletAddress];
+    }
+    
 }
 
