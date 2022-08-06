@@ -144,7 +144,7 @@ contract Pausable is Authorizable{
     }
 }
 
-contract CryptoCoin is Pausable{
+contract CryptoToken is Pausable{
 
     uint256 public immutable cap;
     string public name;
@@ -294,13 +294,13 @@ contract CryptoCoin is Pausable{
 contract CryptoTokenSale{
 
    address admin;
-   CryptoCoin public TokenContract;
+   CryptoToken public TokenContract;
    uint256 public TokenPrice;
    uint256 public TotalTokensSold;
    
    event Sell(address buyer, uint256 amount);
    
-   constructor( CryptoCoin tokenContract, uint256 tokenPrice){
+   constructor( CryptoToken tokenContract, uint256 tokenPrice){
     admin = msg.sender;
     TokenContract = tokenContract;
     TokenPrice = tokenPrice;
@@ -334,16 +334,16 @@ contract Airdrop {
   receive() external payable{}
   
    function airdropToken(address _tokenAddress, address[] memory _recipients, uint256 _amount) public {
-        require(CryptoCoin(_tokenAddress).allowance(msg.sender,address(this))>0, "contract is not allowed to spend that token");
+        require(CryptoToken(_tokenAddress).allowance(msg.sender,address(this))>0, "contract is not allowed to spend that token");
          for (uint i=0;i<_recipients.length;i++){
-           CryptoCoin(_tokenAddress).transferFrom(msg.sender, _recipients[i], _amount);
+           CryptoToken(_tokenAddress).transferFrom(msg.sender, _recipients[i], _amount);
         }
     } 
 }
 
 contract Staking {
   
-   CryptoCoin public yourToken;
+   CryptoToken public yourToken;
    address public owner;
    address public sender;
    
@@ -379,7 +379,7 @@ contract Staking {
         lockPeriods.push(90);
         lockPeriods.push(180);
 
-        yourToken = CryptoCoin(tokenAddress);
+        yourToken = CryptoToken(tokenAddress);
     }
 
      function stakeToken(uint numberOfDays, uint amount) external {
@@ -454,4 +454,3 @@ contract Staking {
     receive() external payable{}
     
 }
-
