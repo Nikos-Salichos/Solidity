@@ -13,8 +13,12 @@ You can test all smart contracts functionality at: https://remix.ethereum.org/
 **CarRental**
 - Smart contract that can add renters,  allow/restrict a renter to rent a car, calculate rental time, proceed payments etc.
 
-**CryptoCoin**
-- ERC20 token with advanced functions.
+**CryptoToken**
+- It is a full project consists of the following smart contracts: 
+Ownable, Authorizable, Pausable, CryptoCoin, CryptoTokenSale, Airdrop and Staking (under development).
+It has all the basic functions of ERC20 token with extra advanced functions of authorizable, pausable and ownable smart contracts.
+In addition with the use of CryptoTokenSale you can exchange CryptoCoin for other tokens. Furthermore with the use of Airdrop you can airdrop your token in multiple wallets.
+Currently i develop Staking smart contract that will implements all the functions regarding staking a token.
 
 **Get Reserves in Solidity(Example Uniswap V2)**
 - An example with interface of UniswapV2Factory , function getReserves from Uniswap for Weth and Dai.
