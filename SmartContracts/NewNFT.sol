@@ -8,7 +8,7 @@ contract newNFT is NFTokenMetadata, Ownable {
 
       constructor() {
           nftName = "NSNFT";
-
+          nftSymbol = "NS";
       }
   
   
