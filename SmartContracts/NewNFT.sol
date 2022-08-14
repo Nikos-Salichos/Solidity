@@ -7,6 +7,7 @@ import "https://github.com/0xcert/ethereum-erc721/src/contracts/ownership/ownabl
 contract newNFT is NFTokenMetadata, Ownable {
 
       constructor() {
+          nftName = "NSNFT";
 
       }
   
