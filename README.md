@@ -50,3 +50,4 @@ In addition each deposit has a chance to cause meltdown (10% amount burn, 25% se
 - You can mint your own NFT following the steps below:
 1) Create IPFS repo
 2) Start IPFS Daemon
+3) Add image to IPFS
