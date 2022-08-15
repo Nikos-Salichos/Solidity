@@ -6,10 +6,13 @@ import "https://github.com/0xcert/ethereum-erc721/src/contracts/ownership/ownabl
 
 contract newNFT is NFTokenMetadata, Ownable {
 
-      constructor() {
-          nftName = "NSNFT";
-          nftSymbol = "NS";
-      }
+   constructor() {
+     nftName = "NSNFT";
+     nftSymbol = "NS";
+   }
   
+   function mint(address _to, uint256 _tokenId, string calldata _uri) external onlyOwner {
+
+  }
   
 }
