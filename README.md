@@ -51,3 +51,6 @@ In addition each deposit has a chance to cause meltdown (10% amount burn, 25% se
 1) Create IPFS repo
 2) Start IPFS Daemon
 3) Add image to IPFS
+4) Add JSON file to IPFS like this:
+
+
