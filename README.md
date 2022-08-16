@@ -54,5 +54,6 @@ In addition each deposit has a chance to cause meltdown (10% amount burn, 25% se
 4) Add JSON file to IPFS like this:
 {
     "name": "My NFT",
+    "description": "This is my NFT",
 
 }
