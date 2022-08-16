@@ -57,3 +57,4 @@ In addition each deposit has a chance to cause meltdown (10% amount burn, 25% se
     "description": "This is my NFT",
     "image": "link to ipfs image",
 }
+5) Add file to IPFS
