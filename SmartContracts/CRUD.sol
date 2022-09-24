@@ -22,6 +22,10 @@ contract Ownable  {
     owner = newOwner;
   }
   
+  function renounceOwnership() public onlyOwner {
+
+  }
+  
 }
 
 
