@@ -16,6 +16,10 @@ contract Ownable  {
     _;
   }
   
+  function transferOwnership(address newOwner) public onlyOwner {
+
+  }
+  
 }
 
 
