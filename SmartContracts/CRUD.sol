@@ -11,6 +11,10 @@ contract Ownable  {
     owner = msg.sender;
   }
   
+  modifier onlyOwner() {
+
+  }
+  
 }
 
 
