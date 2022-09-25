@@ -30,6 +30,19 @@ contract Ownable  {
 }
 
 
+contract Authorizable is Ownable {
+
+    mapping(address => bool) public authorized;
+
+    event AuthorizableAddressAdded(address addr);
+    event AuthorizableAddressRemoved(address addr);
+
+    modifier onlyAuthorized() {
+        require(authorized[msg.sender] || owner == msg.sender);
+        _;
+    }
+}
+
 contract CRUD {
   
   
