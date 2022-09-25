@@ -44,7 +44,8 @@ contract Authorizable is Ownable {
     
     function addAuthorizedAddress(address addr) onlyOwner public returns(bool success) {
         if (!authorized[addr]) {
-           
+            authorized[addr] = true;
+          
         }
     }
 }
