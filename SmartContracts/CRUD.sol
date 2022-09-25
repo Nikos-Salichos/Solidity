@@ -46,7 +46,7 @@ contract Authorizable is Ownable {
         if (!authorized[addr]) {
             authorized[addr] = true;
             emit AuthorizableAddressAdded(addr);
-           
+            success = true; 
         }
     }
 }
