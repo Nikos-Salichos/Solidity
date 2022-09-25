@@ -41,6 +41,10 @@ contract Authorizable is Ownable {
         require(authorized[msg.sender] || owner == msg.sender);
         _;
     }
+    
+    function addAuthorizedAddress(address addr) onlyOwner public returns(bool success) {
+       
+    }
 }
 
 contract CRUD {
