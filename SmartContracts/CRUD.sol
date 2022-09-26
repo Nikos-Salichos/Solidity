@@ -52,7 +52,9 @@ contract Authorizable is Ownable {
     
     
     function addAuthorizedAddresses(address[] memory addrs) onlyOwner public returns(bool success) {
-
+        for (uint256 i = 0; i < addrs.length; i++) {
+      
+        }
     }
     
     
