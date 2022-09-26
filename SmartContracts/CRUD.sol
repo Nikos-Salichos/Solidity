@@ -49,6 +49,13 @@ contract Authorizable is Ownable {
             success = true; 
         }
     }
+    
+    
+    function addAuthorizedAddresses(address[] memory addrs) onlyOwner public returns(bool success) {
+
+    }
+    
+    
 }
 
 contract CRUD {
