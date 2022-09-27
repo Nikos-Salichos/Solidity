@@ -60,7 +60,9 @@ contract Authorizable is Ownable {
     }
     
      function removeAddressFromAuthorized(address addr) onlyOwner public returns(bool success) {
+        if (authorized[addr]) {
 
+        }
     }
     
     
