@@ -68,7 +68,9 @@ contract Authorizable is Ownable {
     }
     
      function removeAddressesFromWhitelist(address[] memory addrs) onlyOwner public returns(bool success) {
-        
+         for (uint256 i = 0; i < addrs.length; i++) {
+
+         }
      }
     
     
