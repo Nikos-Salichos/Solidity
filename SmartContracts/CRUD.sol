@@ -63,7 +63,7 @@ contract Authorizable is Ownable {
         if (authorized[addr]) {
             authorized[addr] = false;
             emit AuthorizableAddressRemoved(addr);
-        
+            success = true;
         }
     }
     
