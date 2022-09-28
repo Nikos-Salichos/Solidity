@@ -83,6 +83,9 @@ contract CRUD {
     address public owner;
     uint256 public activeProductCounter = 0;
     uint256 public inactiveProductCounter = 0;
+    uint256 private productCounter = 0;
 
+    
+  
   
 }
