@@ -81,6 +81,7 @@ contract Authorizable is Ownable {
 contract CRUD {
 
     address public owner;
+    uint256 public activeProductCounter = 0;
 
   
   
