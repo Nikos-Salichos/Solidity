@@ -79,6 +79,9 @@ contract Authorizable is Ownable {
 }
 
 contract CRUD {
+
+    address public owner;
+
   
   
 }
