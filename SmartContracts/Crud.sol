@@ -86,6 +86,7 @@ contract CRUD {
     uint256 private productCounter = 0;
 
     mapping(uint256 => address) public delProductOf;
+    mapping(uint256 => address) public productOwnerOf;
 
   
 }
