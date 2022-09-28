@@ -89,6 +89,6 @@ contract CRUD {
     mapping(uint256 => address) public productOwnerOf;
     mapping(address => uint256) public productsOf;
 
-   
+    enum Deactivated { NO, YES }
   
 }
