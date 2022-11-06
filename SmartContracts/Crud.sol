@@ -180,6 +180,37 @@ contract Crud is Ownable{
     }
     
     
-    
+    function restorDeletedProduct(
+        uint256 productId, 
+        address productOwner
+    ) onlyOwner external returns (bool) {
+        require(delProductOf[productId] == productOwner, "Unmatched Author");
+
+        for(uint i = 0; i < inactiveProducts.length; i++) {
+            if(inactiveProducts[i].productId == productId) {
+                inactiveProducts[i].deleted = Deactivated.NO;
+                inactiveProducts[i].updated = block.timestamp;
+
+                activeProducts.push(inactiveProducts[i]);
+                delete inactiveProducts[i];
+                productOwnerOf[productId] = delProductOf[productId];
+                delete delProductOf[productId];
+            }
+        }
+
+        productsOf[productOwner]++;
+        inactiveProductCounter--;
+        activeProductCounter++;
+
+        emit Action (
+            productId,
+            "PRODUCT RESTORED",
+            Deactivated.NO,
+            msg.sender,
+            block.timestamp
+        );
+
+        return true;
+    }
     
  }
