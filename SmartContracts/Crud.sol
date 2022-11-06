@@ -144,5 +144,11 @@ contract Crud is Ownable{
         return activeProducts;
     }
     
+    function getDeletedProduct() onlyOwner external view returns (ProductStruct[] memory) {
+        return inactiveProducts;
+    }
+    
+    
+    
     
  }
