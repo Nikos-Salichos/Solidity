@@ -101,5 +101,7 @@ contract CRUD {
         uint256 updated;
     }
     
+    ProductStruct[] activeProducts;
+    ProductStruct[] inactiveProducts;
     
 }
