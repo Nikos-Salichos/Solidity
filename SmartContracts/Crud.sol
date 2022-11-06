@@ -150,5 +150,36 @@ contract Crud is Ownable{
     
     
     
+    function deleteProduct(uint256 productId) external returns (bool) {
+        require(productOwnerOf[productId] == msg.sender, "UnproductOwnerized entity");
+
+        for(uint i = 0; i < activeProducts.length; i++) {
+            if(activeProducts[i].productId == productId) {
+                activeProducts[i].deleted = Deactivated.YES;
+                activeProducts[i].updated = block.timestamp;
+                inactiveProducts.push(activeProducts[i]);
+                delProductOf[productId] = productOwnerOf[productId];
+                delete activeProducts[i];
+                delete productOwnerOf[productId];
+            }
+        }
+
+        productsOf[msg.sender]--;
+        inactiveProductCounter++;
+        activeProductCounter--;
+
+        emit Action (
+            productId,
+            "PRODUCT DELETED",
+            Deactivated.YES,
+            msg.sender,
+            block.timestamp
+        );
+
+        return true;
+    }
+    
+    
+    
     
  }
