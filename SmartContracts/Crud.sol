@@ -65,6 +65,41 @@ contract Crud is Ownable{
         owner = msg.sender;
     }
     
+        function createProduct(
+        string memory title,
+        string memory description
+    ) external returns (bool) {
+        require(bytes(title).length > 0, "Title cannot be empty");
+        require(bytes(description).length > 0, "Description cannot be empty");
+
+        productCounter++;
+        productOwnerOf[productCounter] = msg.sender;
+        productsOf[msg.sender]++;
+        activeProductCounter++;
+
+        activeProducts.push(
+            ProductStruct(
+                productCounter,
+                title,
+                description,
+                msg.sender,
+                Deactivated.NO,
+                block.timestamp,
+                block.timestamp
+            )
+        );
+
+        emit Action (
+            productCounter,
+            "PRODUCT CREATED",
+            Deactivated.NO,
+            msg.sender,
+            block.timestamp
+        );
+
+        return true;
+    }
+    
     
     
  }
