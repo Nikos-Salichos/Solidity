@@ -100,6 +100,35 @@ contract Crud is Ownable{
         return true;
     }
     
+     function updateProduct(
+        uint256 productId,
+        string memory title,
+        string memory description
+    ) external returns (bool) {
+        require(productOwnerOf[productId] == msg.sender, "UnproductOwnerized entity");
+        require(bytes(title).length > 0, "Title cannot be empty");
+        require(bytes(description).length > 0, "Description cannot be empty");
+
+        for(uint i = 0; i < activeProducts.length; i++) {
+            if(activeProducts[i].productId == productId) {
+                activeProducts[i].title = title;
+                activeProducts[i].description = description;
+                activeProducts[i].updated = block.timestamp;
+            }
+        }
+
+        emit Action (
+            productId,
+            "POST UPDATED",
+            Deactivated.NO,
+            msg.sender,
+            block.timestamp
+        );
+
+        return true;
+    }
+    
+    
     
     
  }
