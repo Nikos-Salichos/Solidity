@@ -128,7 +128,17 @@ contract Crud is Ownable{
         return true;
     }
     
-    
+    function showProduct(
+        uint256 productId
+    ) external view returns (ProductStruct memory) {
+        ProductStruct memory product;
+        for(uint i = 0; i < activeProducts.length; i++) {
+            if(activeProducts[i].productId == productId) {
+                product = activeProducts[i];
+            }
+        }
+        return product;
+    }
     
     
  }
