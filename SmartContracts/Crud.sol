@@ -140,5 +140,9 @@ contract Crud is Ownable{
         return product;
     }
     
+    function getProducts() external view returns (ProductStruct[] memory) {
+        return activeProducts;
+    }
+    
     
  }
