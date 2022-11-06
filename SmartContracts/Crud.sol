@@ -90,5 +90,16 @@ contract CRUD {
     mapping(address => uint256) public productsOf;
 
     enum Deactivated { NO, YES }
-  
+    
+    struct ProductStruct {
+        uint256 productId;
+        string title;
+        string description;
+        address productOwner;
+        Deactivated deleted;
+        uint256 created;
+        uint256 updated;
+    }
+    
+    
 }
