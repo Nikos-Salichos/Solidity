@@ -104,4 +104,12 @@ contract CRUD {
     ProductStruct[] activeProducts;
     ProductStruct[] inactiveProducts;
     
+    event Action (
+        uint256 productId,
+        string actionType,
+        Deactivated deleted,
+        address indexed executor,
+        uint256 created
+    );
+    
 }
