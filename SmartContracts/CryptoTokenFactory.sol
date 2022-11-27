@@ -8,8 +8,7 @@ contract CryptoCoinFactory{
         CryptoCoins.push(cryptoCoin);
     }
     
-   function getAllCryptoCoins() public pure returns (CryptoCoin[] memory allCryptoCoins)
-    {
-       
+   function getAllCryptoCoins() public pure returns (CryptoCoin[] memory allCryptoCoins){
+        return allCryptoCoins;
     }
 }
