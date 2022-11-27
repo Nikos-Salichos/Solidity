@@ -29,3 +29,12 @@ contract CloneFactory {
   }
   
 }
+
+contract CryptoCoinFactoryLessGas is Ownable, CloneFactory {
+
+  address public libraryAddress;
+
+  event CryptoCoinCreated(address newFoundation);
+
+
+}
