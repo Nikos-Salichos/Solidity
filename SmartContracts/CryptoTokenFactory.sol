@@ -7,4 +7,9 @@ contract CryptoCoinFactory{
         CryptoCoin cryptoCoin = new CryptoCoin(initialSupply,tokenName,tokenSymbol,tokenCap);
         CryptoCoins.push(cryptoCoin);
     }
+    
+   function getAllCryptoCoins() public pure returns (CryptoCoin[] memory allCryptoCoins)
+    {
+       
+    }
 }
