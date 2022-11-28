@@ -14,5 +14,10 @@ contract Airdrop {
     
     address owner;
     
+    constructor() {
+        owner = msg.sender;
+    }
+    
+
 
 }
