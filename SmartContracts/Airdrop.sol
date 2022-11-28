@@ -21,6 +21,8 @@ contract Airdrop {
     receive() external payable{}
     
     function airdropToken(address _tokenAddress, address[] memory _recipients, uint256 _amount) public {
+        require(IERC20(_tokenAddress).allowance(msg.sender,address(this))>0, "contract is not allowed to spend that token");
+        
 
     }
 
