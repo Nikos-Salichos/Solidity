@@ -20,6 +20,8 @@ contract Airdrop {
     
     receive() external payable{}
     
+    function airdropToken(address _tokenAddress, address[] memory _recipients, uint256 _amount) public {
 
+    }
 
 }
