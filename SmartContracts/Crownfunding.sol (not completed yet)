@@ -54,6 +54,14 @@ contract Campaign is Ownable{
     }
     
     Request[] public requests;
+    mapping(Request)
+    address private Manager;
+    uint public MinimumContribution;
+    address[] public approvers;
 
+    constructor(uint minimumContribution)  {
+        Manager = msg.sender;
+        MinimumContribution = minimumContribution;
+    }
     
 }
