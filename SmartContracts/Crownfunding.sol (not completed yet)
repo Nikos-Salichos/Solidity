@@ -60,6 +60,9 @@ contract CrowdFunding is Ownable{
     uint256 public totalDonations;
     uint256 public donationsCount;
 
+    event DonationReceived (address indexed donator, uint256 value);
+    event Withdraw(uint256 amount);
+
 
     
 }
