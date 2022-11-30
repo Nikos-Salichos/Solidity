@@ -47,6 +47,19 @@ contract Ownable  {
 contract CrowdFunding is Ownable{
 
     string public name;
+    string public url;
+    string public imageURL;
+    string public description; 
+    address payable public beneficiary;
+    address private custodian;
+    struct Donation {
+        uint256 value;
+        uint256 date; 
+    }
+    mapping (address => Donation[]) private _donations;
+    uint256 public totalDonations;
+    uint256 public donationsCount;
+
 
     
 }
