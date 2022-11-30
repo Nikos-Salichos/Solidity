@@ -45,10 +45,15 @@ contract Ownable  {
 }
 
 contract Campaign is Ownable{
+
   struct Request{
         string Description;
         uint Value;
         address Recipient;
         bool Complete;
     }
+    
+    Request[] public requests;
+
+    
 }
