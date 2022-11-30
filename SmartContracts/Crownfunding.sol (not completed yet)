@@ -44,24 +44,9 @@ contract Ownable  {
   }
 }
 
-contract Campaign is Ownable{
+contract CrowdFunding is Ownable{
 
-  struct Request{
-        string Description;
-        uint Value;
-        address Recipient;
-        bool Complete;
-    }
-    
-    Request[] public requests;
-    mapping(Request)
-    address private Manager;
-    uint public MinimumContribution;
-    address[] public approvers;
+    string public name;
 
-    constructor(uint minimumContribution)  {
-        Manager = msg.sender;
-        MinimumContribution = minimumContribution;
-    }
     
 }
