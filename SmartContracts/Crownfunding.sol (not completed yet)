@@ -63,6 +63,12 @@ contract CrowdFunding is Ownable{
     event DonationReceived (address indexed donator, uint256 value);
     event Withdraw(uint256 amount);
 
-
-    
+    constructor (string memory _name, string memory _url, string memory _imageURL, string memory _description, address payable _beneficiary, address _custodian)  {
+        name = _name;
+        url = _url;
+        imageURL = _imageURL;
+        description = _description;
+        beneficiary = _beneficiary;
+        transferOwnership(_custodian);
+    }
 }
