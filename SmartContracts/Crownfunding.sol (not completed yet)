@@ -114,4 +114,8 @@ contract CrowdFunding is Ownable{
         donationsCount++;
     }
     
+     receive() external payable {
+        // custom function code
+    }
+    
 }
