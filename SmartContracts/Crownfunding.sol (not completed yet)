@@ -109,4 +109,9 @@ contract CrowdFunding is Ownable{
         emit Withdraw(balance);
     }
     
+     fallback () external payable {
+        totalDonations = totalDonations + msg.value;
+        donationsCount++;
+    }
+    
 }
