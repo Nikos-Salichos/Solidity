@@ -8,6 +8,7 @@ In SmartContracts folder you can find all smart contracts that i have develop on
 You can test all smart contracts functionality at: https://remix.ethereum.org/
 
 **Airdrop**
+Smart contract that can be used to airdrop token to wallets.
 
 **Calculator**
 - A classic calculator using SafeMath lib (not need after v8.0).
