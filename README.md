@@ -10,6 +10,9 @@ You can test all smart contracts functionality at: https://remix.ethereum.org/
 **Airdrop**
 Smart contract that can be used to airdrop token to wallets.
 
+**Book Registration**
+Smart contract for sharing books in library.
+
 **Calculator**
 - A classic calculator using SafeMath lib (not need after v8.0).
 
