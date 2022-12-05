@@ -22,6 +22,8 @@ Smart contract for sharing books in library.
 **Crownfunding**
 - Smart contract that can set to a beneficiary and people can donate to it. Depend on the deployment addresses it can be used a custodian or non-custodian smart contract.
 
+**Crud**
+
 **CryptoToken**
 - It is a full project consists of the following smart contracts: 
 Ownable, Authorizable, Pausable, CryptoCoin, CryptoTokenSale, Airdrop and Staking (under development).
